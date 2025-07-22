@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plaid Link Test</title>
+  <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+</head>
+<body>
+  <h1>Connect Your Bank</h1>
+  <button id="link-button">Launch Plaid Link</button>
+
+  <script>
+    const linkToken = "";
+
+    const handler = Plaid.create({
+      token: linkToken,
+      onSuccess: function(public_token, metadata) {
+        console.log("✅ Success! Public token:", public_token);
+        console.log("Metadata:", metadata);
+        alert("Bank linked! Public token is in console.");
+      },
+      onExit: function(err, metadata) {
+        console.warn("User exited Plaid Link", err, metadata);
+      }
+    });
+
+    document.getElementById('link-button').onclick = function () {
+      handler.open();
+    };
+  </script>
+</body>
+</html>
