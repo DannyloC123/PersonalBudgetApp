@@ -3,3 +3,4 @@ exchange_token.py
 get_transactions.py
 link.html
 plaid_setup.py
+transactions.json
